@@ -5,6 +5,7 @@ import model.bd as query
 
 contadorSession = 0
 
+
 def obtenerListaNegra(id, monto, tipo):
     sql = "SELECT * FROM listanegra WHERE idCliente = %s and montoTransaccion = %s and idTransaccionTipo = %s;"
     datos = (id,monto,tipo)
