@@ -1,0 +1,71 @@
+{%include 'header.html'%}
+
+{% with   messages=get_flashed_messages() %}
+{% if messages %}
+    <div class="alert alert-danger" role="alert">
+        {% for messages in messages  %}
+            {{messages}}
+        {% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
+
+<form method="post" action="/newrulers" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-header">
+            Registro de transaccion
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Reglas de negocio</h5>
+            <p class="card-text">
+                <div class="form-group">
+                    <label for="txtInicio">Inicio</label>
+                    <input type="text" name="txtInicio" id="txtInicio" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="txtFin">Fin</label>
+                    <input type="text" name="txtFin" id="txtFin" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="txtDescripcion">Descripcion</label>
+                    <input type="text" name="txtDescripcion" id="txtDescripcion" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Registrar">
+                    <a class="btn btn-primary" href="{{url_for('index')}}">Regresar</a>
+                </div>          
+            </p>
+        </div>
+    </div>
+</form>
+<br> 
+<br>
+<table class="table table-light">
+    <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Descripcion</th>
+            <th>accion</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for reglas in reglas %}
+            <tr>
+                <td>{{reglas[0]}}</td>
+                <td>{{reglas[1]}}</td>
+                <td>{{reglas[2]}}</td>
+                <td>{{reglas[3]}}</td>
+                <td>
+                    {% if reglas[4]==1 %}
+                        <a href = "" class="btn btn-danger">deshabilitar</a>
+                    {% elif reglas[4]==0 %}
+                        <a href = "" class="btn btn-warning">Habilitar</a>
+                    {% endif %}
+                    </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{%include 'footer.html'%}

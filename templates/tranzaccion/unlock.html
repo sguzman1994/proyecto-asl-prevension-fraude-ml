@@ -1,0 +1,38 @@
+{%include 'header.html'%}
+
+{% with   messages=get_flashed_messages() %}
+{% if messages %}
+    <div class="alert alert-danger" role="alert">
+        {% for messages in messages  %}
+            {{messages}}
+        {% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
+
+<form method="post" action="/process" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-header">
+            Desbloquea tu cuenta
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Ingresa tus datos</h5>
+            <p class="card-text">
+
+                <div class="form-group">
+                    <label for="txtDocumento">Numero de documento</label>
+                    <input type="text" name="txtDocumento" id="txtDocumento" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="txtToken">Codigo de verificacion</label>
+                    <input type="text" name="txtToken" id="txtToken" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Desbloquear">
+                    <a class="btn btn-primary" href="{{url_for('index')}}">Regresar</a>
+                </div>          
+            </p>
+        </div>
+    </div>
+</form>
+{%include 'footer.html'%}

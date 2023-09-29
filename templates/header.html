@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Fontfaces CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-face.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-all.min.css')}}"  type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='material-design-iconic-font.min.css')}}" type="text/css">
+
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css')}}" type="text/css">
+
+    <!-- Vendor CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='animsition.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-progressbar-3.3.4.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='animate.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='hamburgers.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='slick.scss')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='select2.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='perfect-scrollbar.css')}}">
+
+    <!-- Main CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='theme.css')}}">
+
+    <title>inicio</title>
+</head>
+<body>
+    <!-- <image src="{{ url_for('static', filename='GOKU.jpg') }}"></image>-->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a class="navbar-brand" href="#">Gestion de transacciones</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('index')}}">Transacciones <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('create')}}">Registrar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('unlock')}}">Desbloqueo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('client')}}">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('ruler')}}">Reglas</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a class="nav-link" href="{{url_for('close')}}">Salir</a>
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <br>
+    <div class="container">

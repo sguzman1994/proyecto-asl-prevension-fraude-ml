@@ -1,0 +1,81 @@
+{%include 'header.html'%}
+
+{% with   messages=get_flashed_messages() %}
+{% if messages %}
+    <div class="alert alert-danger" role="alert">
+        {% for messages in messages  %}
+            {{messages}}
+        {% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
+
+<form method="post" action="/store" enctype="multipart/form-data">
+    {% if alerta=="La transaccion fue: Bloqueada, por lista negra del usuario" or alerta=="La nueva transaccion fue categorizada por IA como posible: Fraude" %}
+    <script>
+        var text = "{{alerta}}";
+        var alerta = document.createElement('div');
+        alerta.textContent = text;
+        alerta.style.backgroundColor = 'red';
+        alerta.style.color = 'white';
+        alerta.style.padding = '10px';
+        alerta.style.textAlign = 'center';
+        document.body.insertBefore(alerta, document.body.firstChild);
+
+        setTimeout(function() {
+        window.location.href = '/';
+        }, 3000);
+    </script>
+    {% elif alerta=="No Fraude" %} 
+    <script>
+        setTimeout(function() {
+        window.location.href = '/';
+        }, 0);
+    </script>    
+    {% endif %}
+    <div class="card">
+        <div class="card-header">
+            Registro de transaccion
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Datos de transaccion</h5>
+            <p class="card-text">
+
+                <div class="form-group">
+                    <label for="txtidA">Cuenta</label>
+                    <input type="text" name="txtidA" id="txtidA" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="txtidB">Cliente</label>
+                    <input type="text" name="txtidB" id="txtidB" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="txtidC">Tipo transanccion</label>
+                    <input type="text" name="txtidC" id="txtidC" class="form-control" placeholder=""> 
+                </div>
+
+                <div class="form-group">
+                  <label for="txtestablecimeinto">Establecimiento</label>
+                  <input type="text" name="txtestablecimeinto" id="txtestablecimeinto" class="form-control" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="txthora">Hora</label>
+                    <input type="text" name="txthora" id="txthora" class="form-control" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtmonto">Monto</label>
+                    <input type="text" name="txtmonto" id="txtmonto" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Registrar">
+                    <a class="btn btn-primary" href="{{url_for('index')}}">Regresar</a>
+                </div>          
+            </p>
+        </div>
+    </div>
+
+    
+</form>
+{%include 'footer.html'%}

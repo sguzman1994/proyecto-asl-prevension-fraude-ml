@@ -1,0 +1,200 @@
+{%include 'header.html'%}
+<!-- WELCOME-->
+ <section class="welcome p-t-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="title-4">Hola bienvenido
+                    <span></span>
+                </h1>
+                <hr class="line-seprate">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END WELCOME-->
+
+<!-- STATISTIC-->
+<section class="statistic statistic2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-3">
+                <div class="statistic__item statistic__item--green">
+                    <h2 class="number">{{reportes[0][2]}}</h2>
+                    <span class="desc">Total transacciones</span>
+                    <div class="icon">
+                        <i class="zmdi zmdi-account-o"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="statistic__item statistic__item--orange">
+                    <h2 class="number">{{reportes[0][3]}}</h2>
+                    <span class="desc">Deteccion basica</span>
+                    <div class="icon">
+                        <i class="zmdi zmdi-shopping-cart"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="statistic__item statistic__item--blue">    
+                    <h2 class="number">{{reportes[0][4]}}</h2>
+                    <span class="desc">Deteccion (IA)</span>
+                    <div class="icon">
+                        <i class="zmdi zmdi-calendar-note"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="statistic__item statistic__item--red">
+                    <h2 class="number">S/.{{'{:,.0f}'.format(reportes[0][5])}}</h2>
+                    <span class="desc">Posible perdida</span>
+                    <div class="icon">
+                        <i class="zmdi zmdi-money"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END STATISTIC-->
+
+<!-- STATISTIC CHART-->
+<section class="statistic-chart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="title-5 m-b-35">metricas</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <!-- CHART-->
+                <div class="statistic-chart-1">
+                    <h3 class="title-3 m-b-30">transacciones</h3>
+                    <div class="chart-wrap">
+                        <canvas id="widgetChart5"></canvas>
+                    </div>
+                    <div class="statistic-chart-1-note">
+                        <span class="big">{{reportes[0][1]}}</span>
+                        <span>/ {{reportes[0][0]}} clientes</span>
+                    </div>
+                </div>
+                <!-- END CHART-->
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <!-- TOP CAMPAIGN-->
+                <div class="top-campaign">
+                    <h3 class="title-3 m-b-30">Posible perdida</h3>
+                    <div class="table-responsive">
+                        <table class="table table-top-campaign">
+                            <tbody>
+                                <tr>
+                                    <td>1. Julio</td>
+                                    <td>S/. 77,026.96</td>
+                                </tr>
+                                <tr>
+                                    <td>2. Junio</td>
+                                    <td>S/. 46,399.22</td>
+                                </tr>
+                                <tr>
+                                    <td>3. Mayo</td>
+                                    <td>S/. 35,364.90</td>
+                                </tr>
+                                <tr>
+                                    <td>4. Abril</td>
+                                    <td>S/. 20,366.96</td>
+                                </tr>
+                                <tr>
+                                    <td>5. Marzo</td>
+                                    <td>S/. 10,366.96</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END TOP CAMPAIGN-->
+            </div>
+            <div class="col-md-6 col-lg-4">
+             <!-- /# card -->
+                <div class="top-campaign">
+                    <h3 class="title-3 m-b-30">Posible perdida</h3>
+                    <br>
+                    <div class="table-responsive">
+                            <span class="desc">% transaciones operadas</span>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ 20 if 100-((reportes[0][4]/reportes[0][2])*100) < 20 else 100-((reportes[0][4]/reportes[0][2])*100) }}%" aria-valuenow="60"
+                                    aria-valuemin="0" aria-valuemax="100">{{'{:,.2f}'.format(100-(reportes[0][4]/reportes[0][2])*100)}}%</div>
+                            </div>
+                            <span class="desc">% deteccion basica</span>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ 20 if (reportes[0][3]/reportes[0][2])*100 < 20 else (reportes[0][3]/reportes[0][2])*100 }}%" aria-valuenow="75"
+                                    aria-valuemin="0" aria-valuemax="100">{{'{:,.2f}'.format((reportes[0][3]/reportes[0][2])*100)}}%</div>   
+                            </div>
+                            <span class="desc">% deteccion IA</span>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ 20 if (reportes[0][4]/reportes[0][2])*100 < 20 else (reportes[0][4]/reportes[0][2])*100 }}%" aria-valuenow="50"
+                                    aria-valuemin="0" aria-valuemax="100">{{'{:,.2f}'.format((reportes[0][4]/reportes[0][2])*100)}}%</div>
+                            </div>
+                            <span class="desc">% posible perdida</span>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ 20 if (reportes[0][5]/reportes[0][6])*100 < 20 else (reportes[0][5]/reportes[0][6])*100 }}%" aria-valuenow="90"
+                                    aria-valuemin="0" aria-valuemax="100">{{'{:,.2f}'.format((reportes[0][5]/reportes[0][6])*100)}}%</div>
+                            </div>
+                            <br>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END STATISTIC CHART-->
+<br>
+<br>
+<a href="{{url_for('create')}}" class="btn btn-success">
+    Ingresar nueva transaccion
+</a>
+<br> 
+<br>
+<table class="table table-light">
+    <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>#</th>
+            <th>#</th>
+            <th>#</th>
+            <th>establecimiento</th>
+            <th>hora</th>
+            <th>monto</th>
+            <th>tipo fraude</th>
+            <th>accion</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for tranzacciones in tranzacciones %}
+            <tr>
+                <td>{{tranzacciones[0]}}</td>
+                <td>{{tranzacciones[1]}}</td>
+                <td>{{tranzacciones[2]}}</td>
+                <td>{{tranzacciones[3]}}</td>
+                <td>{{tranzacciones[4]}}</td>
+                <td>{{tranzacciones[5]}}</td>
+                <td>S/. {{tranzacciones[6]}}</td>
+                <td>
+                {% if tranzacciones[7]==1 %}
+                    {{"Fraude"}}
+                {% elif tranzacciones[7]==0 %}
+                    {{"No fraude"}}
+                {% endif %}
+                </td>
+                <td>
+                    <a href = "/destroy/{{tranzacciones[0]}}" class="btn btn-danger">Borrar</a>
+                    |
+                    <a href = "/edit/{{tranzacciones[0]}}" class="btn btn-warning">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{%include 'footer.html'%}
